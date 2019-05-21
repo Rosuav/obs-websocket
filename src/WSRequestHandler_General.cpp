@@ -264,3 +264,24 @@ HandlerResponse WSRequestHandler::HandleGetVideoInfo(WSRequestHandler* req) {
 	obs_data_set_string(response, "scaleType", describe_scale_type(ovi.scale_type));
 	return req->SendOKResponse(response);
 }
+
+/**
+ * Open a projector.
+ * 
+ * @param {int (Optional)} `monitor` Monitor to open the projector on. If -1 or omitted, opens a window.
+ * @param {String (Optional)} `name` Name of the projector. If omitted, uses the default name.
+ * 
+ * @api requests
+ * @name OpenProjector
+ * @category general
+ * @since 4.7.0 
+ */
+HandlerResponse WSRequestHandler::HandleOpenProjector(WSRequestHandler* req) {
+	int monitor = -1;
+	if (req->hasField("monitor")) {
+		monitor = obs_data_get_int(req->data, "monitor");
+	}
+	QString name = obs_data_get_string(req->data, "name");
+	obs_frontend_open_projector(monitor, name.toUtf8());
+	return req->SendOKResponse();
+}

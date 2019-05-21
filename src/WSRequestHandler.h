@@ -66,6 +66,7 @@ class WSRequestHandler : public QObject {
 		static HandlerResponse HandleGetStats(WSRequestHandler* req);
 		static HandlerResponse HandleSetHeartbeat(WSRequestHandler* req);
 		static HandlerResponse HandleGetVideoInfo(WSRequestHandler* req);
+		static HandlerResponse HandleOpenProjector(WSRequestHandler* req);
 
 		static HandlerResponse HandleSetFilenameFormatting(WSRequestHandler* req);
 		static HandlerResponse HandleGetFilenameFormatting(WSRequestHandler* req);
