@@ -266,7 +266,7 @@ HandlerResponse WSRequestHandler::HandleGetVideoInfo(WSRequestHandler* req) {
 }
 
 /**
- * Open a projector.
+ * Open a projector. NOTE: The arguments are currently not supported.
  * 
  * @param {int (Optional)} `monitor` Monitor to open the projector on. If -1 or omitted, opens a window.
  * @param {String (Optional)} `name` Name of the projector. If omitted, uses the default name.
@@ -282,6 +282,6 @@ HandlerResponse WSRequestHandler::HandleOpenProjector(WSRequestHandler* req) {
 		monitor = obs_data_get_int(req->data, "monitor");
 	}
 	QString name = obs_data_get_string(req->data, "name");
-	obs_frontend_open_projector(monitor, name.toUtf8());
+	obs_frontend_open_projector(/*monitor, name.toUtf8()*/);
 	return req->SendOKResponse();
 }
